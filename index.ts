@@ -1,7 +1,7 @@
 import { stepCountIs, streamText } from "ai";
 import { google } from "@ai-sdk/google";
 import { SYSTEM_PROMPT } from "./prompts";
-import { generateCommitMessageTool, getChangesInDirectoryTool } from "./tools";
+import { generateMarkdownFileTool, generateCommitMessageTool, getChangesInDirectoryTool } from "./tools";
 
 
 const CodeReviewAgent = async (prompt: string) => {
@@ -12,6 +12,8 @@ const CodeReviewAgent = async (prompt: string) => {
         tools: {
             getChangesInDirectory: getChangesInDirectoryTool,
             generateCommitMessage: generateCommitMessageTool,
+            generateMarkdownFile: generateMarkdownFileTool,
+            
         },
         stopWhen: stepCountIs(10),
     });
